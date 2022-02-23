@@ -10,8 +10,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // theme: ThemeData(backgroundColor: Colors.blueGrey),
+      debugShowCheckedModeBanner: false,
       title: 'Ninja Trips',
-      home: Home(),
+      home: SafeArea(child: Home()),
     );
   }
 }
