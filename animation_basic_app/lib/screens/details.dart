@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:lipsum/lipsum.dart' as lipsum;
-
 import '../models/Trip.dart';
 import '../shared/heart.dart';
 
@@ -11,7 +9,8 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -22,11 +21,14 @@ class Details extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               ClipRRect(
-                  child: Image.asset(
-                'images/${trip!.img}',
-                height: 360,
-                fit: BoxFit.cover,
-                alignment: Alignment.topCenter,
+                  child: Hero(
+                tag: 'key-img-${trip!.img}',
+                child: Image.asset(
+                  'images/${trip!.img}',
+                  height: 360,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                ),
               )),
               SizedBox(height: 30),
               ListTile(
@@ -41,11 +43,12 @@ class Details extends StatelessWidget {
                   trailing: Heart()),
               Padding(
                   padding: EdgeInsets.all(18),
-                  child: Text(
-                      lipsum.createText(numParagraphs: 1, numSentences: 3),
+                  child: Text("data",
                       style: TextStyle(color: Colors.grey[600], height: 1.4))),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

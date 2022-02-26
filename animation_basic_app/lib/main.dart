@@ -1,4 +1,5 @@
 import 'package:animation_basic_app/screens/home.dart';
+import 'package:animation_basic_app/screens/sandBox.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,8 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ninja Trips',
-      home: Home(),
+      debugShowCheckedModeBanner: false,
+      title: 'Data Trips',
+      home: SafeArea(child: Home()
+          // child: SandBox(),
+          ),
     );
   }
 }
+//6 
